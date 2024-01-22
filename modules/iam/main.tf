@@ -30,3 +30,11 @@ resource "scaleway_iam_group_membership" "qa_membership" {
   group_id = scaleway_iam_group.qa.id
   user_id  = each.value.id
 }
+
+resource "scaleway_iam_policy" "iam_qa_policy_kubernetes" {
+  name     = "qa permissions"
+  group_id = scaleway_iam_group.qa.id
+  rule {
+    permission_set_names = ["KubernetesFullAccess"]
+  }
+}
