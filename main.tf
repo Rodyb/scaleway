@@ -19,3 +19,10 @@ module "s3" {
   zone = var.zone
   region = var.region
 }
+module "iam" {
+  source = "./modules/iam"
+  env_prefix = var.env_prefix
+  zone = var.zone
+  region = var.region
+  qa_users = ["user1@example.com", "user2@example.com", "user3@example.com"]
+}
